@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ETF kalkulátor: számold ki a befektetésed várható értékét kamatos kamattal."
+    />
+  <link rel="canonical" href="https://kalkulatorbazis.hu/kalkulatorok/etf-kalkulator.html" />
+<title>ETF kalkulátor – befektetés számítás</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/pages/etf.css" />
+    <script src="../js/global-head.js"></script>
+  </head>
+
+  <body>
+    <div id="header"></div>
+
+    <main class="container page-etf">
+      <!-- HERO -->
+      <section class="hero">
+        <h1>ETF kalkulátor</h1>
+        <p>Számold ki, mennyit érhet a befektetésed hosszú távon.</p>
+      </section>
+
+      <!-- KALKULÁTOR -->
+      <section class="card card-calculator">
+        <div class="calc-grid">
+          <div>
+            <label>Kezdőtőke (Ft)</label>
+            <input
+              type="text"
+              id="initial"
+              inputmode="numeric"
+              placeholder="pl. 100000"
+            />
+          </div>
+
+          <div>
+            <label>Havi befektetés (Ft)</label>
+            <input
+              type="text"
+              id="monthly"
+              inputmode="numeric"
+              placeholder="pl. 20000"
+            />
+          </div>
+
+          <div>
+            <label>Éves hozam (%)</label>
+            <input type="number" id="rate" placeholder="pl. 7" />
+          </div>
+
+          <div>
+            <label>Időtáv (év)</label>
+            <input type="number" id="years" placeholder="pl. 20" />
+          </div>
+        </div>
+
+        <div class="result-box">
+          <p>Végösszeg:</p>
+          <p id="result-final">–</p>
+
+          <p id="result-profit"></p>
+        </div>
+      </section>
+
+      <!-- SEO -->
+      <section class="article">
+        <div class="info-box">
+          <strong>Tipp:</strong> A hosszú távú befektetésnél a kamatos kamat a
+          legnagyobb erő.
+        </div>
+
+        <h2>Mi az ETF?</h2>
+        <p>
+          Az ETF (tőzsdén kereskedett alap) egy befektetési forma, amely több
+          részvényt vagy eszközt tartalmaz. Segítségével egyszerre több
+          vállalatba fektethetsz.
+        </p>
+
+        <h2>Hogyan működik a kamatos kamat?</h2>
+        <p>
+          A hozam nemcsak az eredeti befektetésedre, hanem a már megszerzett
+          nyereségre is számítódik. Ez hosszú távon exponenciális növekedést
+          eredményez.
+        </p>
+
+        <h2>Példa</h2>
+        <p>
+          Ha havonta 20 000 Ft-ot fektetsz be 7%-os hozammal 20 éven keresztül,
+          a befektetésed több millió forintra nőhet.
+        </p>
+        <h2>Milyen hozam várható ETF befektetés esetén?</h2>
+
+        <p>
+          Az ETF-ek várható hozama nagyban függ a választott piactól, az
+          időtávtól és a gazdasági környezettől. Történelmi adatok alapján a
+          széles körben diverzifikált részvénypiaci ETF-ek hosszú távon gyakran
+          évi 6-10% közötti átlagos hozamot értek el, azonban a múltbeli
+          teljesítmény nem jelent garanciát a jövőre nézve.
+        </p>
+
+        <p>
+          A rövid távú árfolyam-ingadozások természetesek. Egy jól megválasztott
+          ETF befektetés esetén általában a hosszú távú, rendszeres befektetés
+          bizonyul eredményes stratégiának.
+        </p>
+
+        <h2>Hogyan használd az ETF kalkulátort?</h2>
+
+        <p>
+          Add meg a kezdőtőkéd összegét, a rendszeresen befektetni kívánt havi
+          összeget, a várható éves hozamot és a befektetés időtartamát években.
+        </p>
+
+        <p>
+          A kalkulátor ezután kiszámolja a befektetés várható jövőbeli értékét a
+          kamatos kamat hatásának figyelembevételével. Az eredmény becslés,
+          amely segíthet a hosszú távú pénzügyi tervezésben.
+        </p>
+
+        <h2>Miért fontos a rendszeres ETF befektetés?</h2>
+
+        <p>
+          A rendszeres befektetés egyik legnagyobb előnye, hogy nem kell a piac
+          időzítésével foglalkoznod. Ha minden hónapban ugyanakkora összeget
+          fektetsz be, akkor magasabb és alacsonyabb árfolyamokon is vásárolsz,
+          ami hosszú távon kiegyensúlyozhatja a piaci mozgások hatását.
+        </p>
+
+        <p>
+          Sok befektető ezért választ havi rendszeres ETF vásárlást ahelyett,
+          hogy egyetlen nagyobb összeget fektetne be egyszerre.
+        </p>
+
+        <h2>Gyakori kérdések az ETF-ekről</h2>
+
+        <h3>Milyen összeggel érdemes ETF-et vásárolni?</h3>
+        <p>
+          Már néhány ezer vagy tízezer forintos havi befektetéssel is el lehet
+          kezdeni az ETF-ek világát. A legfontosabb a rendszeresség és a hosszú
+          távú szemlélet.
+        </p>
+
+        <h3>Lehet pénzt veszíteni ETF befektetésen?</h3>
+        <p>
+          Igen. Az ETF-ek árfolyama emelkedhet és csökkenhet is. Rövid távon
+          veszteség is előfordulhat, ezért fontos a megfelelő időtáv és a
+          kockázatok megértése.
+        </p>
+
+        <h3>Mi a különbség az ETF és a részvény között?</h3>
+        <p>
+          Egy részvény egyetlen vállalat tulajdonrészét jelenti, míg egy ETF
+          egyszerre akár több száz vagy több ezer vállalat részvényét is
+          tartalmazhatja, így nagyobb diverzifikációt biztosíthat.
+        </p>
+      </section>
+
+      <section class="article-recommendation">
+        <h2>Hasznos pénzügyi téma</h2>
+
+        <p>
+          A befektetések mellett egyre többen kezelnek több pénznemet, váltanak
+          devizát vagy utalnak külföldre. Ha érdekelnek az ilyen pénzügyi
+          megoldások, érdemes megismerned a Wise működését is.
+        </p>
+
+        <a
+          href="../landing-pages/wise/wise.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="wise-btn"
+        >
+          Wise bemutató →
+        </a>
+      </section>
+    
+    <section class="article generated-seo" data-generated-seo="calculator">
+      <h2>ETF kalkulátor használata</h2>
+      <p>
+        A etf kalkulátor gyors segítséget ad, ha pontosabb képet szeretnél kapni egy gyakori
+        pénzügyi számítás eredményéről. A kalkulátor egyszerűen használható:
+        add meg a szükséges adatokat, az eredmény pedig azonnal megjelenik.
+      </p>
+      <p>
+        ETF befektetés várható növekedésének becslése. Az eszköz célja, hogy a számolás ne vegyen el felesleges időt,
+        és mobilon is könnyen ellenőrizhető legyen az eredmény.
+      </p>
+      <p>
+        A kapott értékek tájékoztató jellegűek. Pénzügyi, egészségügyi, építőipari vagy nagyobb értékű
+        döntés előtt érdemes a számítást saját adatokkal többször is ellenőrizni, illetve szükség esetén
+        szakértői tanácsot kérni.
+      </p>
+
+      <h2>Gyakori kérdések</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Mire jó a etf kalkulátor?</summary>
+          <p>ETF befektetés várható növekedésének becslése. Akkor hasznos, ha gyors, áttekinthető eredményt szeretnél kapni kézi számolás nélkül.</p>
+        </details>
+        <details>
+          <summary>Ingyenes a kalkulátor használata?</summary>
+          <p>Igen, a Kalkulátor Bázis kalkulátorai ingyenesen használhatók, külön regisztráció nélkül.</p>
+        </details>
+        <details>
+          <summary>Mobilon is működik?</summary>
+          <p>Igen, a kalkulátor mobil-first felülettel készült, ezért telefonon és tableten is kényelmesen használható.</p>
+        </details>
+        <details>
+          <summary>Mennyire pontos az eredmény?</summary>
+          <p>Az eredmény a megadott adatokból számított tájékoztató érték. Ha hivatalos, szerződéses vagy egészségügyi döntéshez használod, ellenőrizd más forrásból is.</p>
+        </details>
+      </div>
+    </section>
+    </main>
+
+    <div id="footer"></div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/penzugyi/etf.js" defer></script>
+  </body>
+</html>

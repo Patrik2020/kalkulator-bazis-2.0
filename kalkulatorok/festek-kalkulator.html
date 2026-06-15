@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Festék kalkulátor: számold ki mennyi falfesték szükséges egy helyiség vagy fal lefestéséhez. Gyors és egyszerű festék mennyiség számítás."
+    />
+  <link rel="canonical" href="https://kalkulatorbazis.hu/kalkulatorok/festek-kalkulator.html" />
+<title>Festék kalkulátor – Mennyi festék kell a falra?</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/pages/festek-kalkulator.css" />
+
+    <script src="../js/global-head.js"></script>
+  </head>
+
+  <body>
+    <div id="header"></div>
+
+    <main class="container page-festek">
+      <section class="hero">
+        <h1>Festék kalkulátor</h1>
+        <p>Számold ki gyorsan, mennyi festékre lesz szükséged a festéshez.</p>
+      </section>
+
+      <section class="card card-calculator">
+        <h2>Festék mennyiség kalkulátor</h2>
+
+        <div class="calc-grid">
+          <div>
+            <label>Szoba hossza (m)</label>
+            <input
+              type="number"
+              id="roomLength"
+              step="0.1"
+              placeholder="pl. 5"
+            />
+          </div>
+
+          <div>
+            <label>Szoba szélessége (m)</label>
+            <input
+              type="number"
+              id="roomWidth"
+              step="0.1"
+              placeholder="pl. 4"
+            />
+          </div>
+
+          <div>
+            <label>Belmagasság (m)</label>
+            <input
+              type="number"
+              id="roomHeight"
+              step="0.1"
+              placeholder="pl. 2.7"
+            />
+          </div>
+          <div>
+            <label>Ablakok összes területe (m²)</label>
+            <small> Add meg az összes ablak együttes területét. </small>
+            <input type="number" id="windowArea" step="0.1" value="0" />
+          </div>
+
+          <div>
+            <label>Ajtók összes területe (m²)</label>
+            <small> Add meg az összes ajtó együttes területét. </small>
+            <input type="number" id="doorArea" step="0.1" value="0" />
+          </div>
+
+          <div>
+            <label>Festékrétegek száma</label>
+            <input type="number" id="layers" value="2" />
+          </div>
+
+          <div>
+            <label>Festék kiadóssága (m²/liter)</label>
+            <input type="number" id="coverage" value="10" />
+          </div>
+
+          <div>
+            <label>Festék ára (Ft/liter)</label>
+            <small
+              >Ha nem tudod, hagyd üresen. A költségszámítás opcionális.</small
+            >
+            <input type="number" id="paintPrice" placeholder="pl. 2500" />
+          </div>
+        </div>
+
+        <div class="checkbox-wrapper">
+          <label>
+            <input type="checkbox" id="paintCeiling" />
+            Mennyezet festése is
+          </label>
+        </div>
+
+        <div class="result-box">
+          <h3>Eredmények</h3>
+
+          <p><strong>Falak felülete:</strong> <span id="wallArea">–</span></p>
+
+          <p>
+            <strong>Mennyezet felülete:</strong> <span id="ceilingArea">–</span>
+          </p>
+
+          <p>
+            <strong>Nyílászárók területe:</strong>
+            <span id="openingsArea">–</span>
+          </p>
+
+          <p>
+            <strong>Festendő összfelület:</strong> <span id="totalArea">–</span>
+          </p>
+
+          <p>
+            <strong>Szükséges festék:</strong> <span id="paintNeeded">–</span>
+          </p>
+
+          <p>
+            <strong>Javasolt vásárlás:</strong>
+            <span id="recommendedPaint">–</span>
+          </p>
+
+          <p><strong>Várható költség:</strong> <span id="paintCost">–</span></p>
+        </div>
+
+        <div class="info-box summary-box" id="summaryText">
+          Add meg az adatokat a számításhoz.
+        </div>
+      </section>
+
+      <section class="article">
+        <div class="info-box">
+          <strong>Tipp:</strong>
+          Érdemes legalább 10% tartalék festékkel számolni javítások és utólagos
+          javítófestések miatt.
+        </div>
+
+        <h2>Mennyi festék kell egy szoba kifestéséhez?</h2>
+
+        <p>
+          Az egyik leggyakoribb kérdés lakásfelújítás során, hogy mennyi
+          festéket kell vásárolni a falak kifestéséhez. A szükséges mennyiség
+          több tényezőtől függ, például a falak méretétől, a felület
+          állapotától, a választott festék minőségétől és attól is, hogy hány
+          rétegben szeretnénk felhordani a festéket.
+        </p>
+
+        <p>
+          A legtöbb modern beltéri falfesték átlagosan 8–12 négyzetmétert képes
+          lefedni egy literrel egyetlen rétegben. Ez azt jelenti, hogy egy
+          átlagos méretű szoba esetében gyakran 8–15 liter festékre van szükség
+          a teljes munkához.
+        </p>
+
+        <p>
+          A pontos számítás segít elkerülni a felesleges költségeket és azt a
+          kellemetlen helyzetet, amikor a festés közben derül ki, hogy elfogyott
+          az anyag. A festék kalkulátor ezért hasznos eszköz mind a házilagos
+          felújítóknak, mind a szakembereknek.
+        </p>
+
+        <h2>Festék kalkulátor használata lépésről lépésre</h2>
+
+        <p>
+          A kalkulátor használata rendkívül egyszerű. Add meg a festendő fal
+          szélességét és magasságát méterben, majd válaszd ki a tervezett
+          rétegek számát. Ezt követően add meg a festék gyártója által megadott
+          kiadósságot négyzetméter/liter értékben.
+        </p>
+
+        <p>
+          A rendszer automatikusan kiszámolja, hogy hozzávetőlegesen hány liter
+          festékre lesz szükséged. Az eredmény tájékoztató jellegű, de a legtöbb
+          esetben kellően pontos a vásárlás megtervezéséhez.
+        </p>
+
+        <h2>Hány liter festék kell 10, 20, 50 vagy 100 négyzetméterre?</h2>
+
+        <p>
+          A következő példák átlagos, 10 m²/liter kiadósságú festékkel és két
+          réteg alkalmazásával készültek:
+        </p>
+
+        <ul>
+          <li>10 m² felülethez körülbelül 2 liter festék szükséges</li>
+          <li>20 m² felülethez körülbelül 4 liter festék szükséges</li>
+          <li>50 m² felülethez körülbelül 10 liter festék szükséges</li>
+          <li>100 m² felülethez körülbelül 20 liter festék szükséges</li>
+        </ul>
+
+        <h2>Milyen tényezők befolyásolják a festékfogyást?</h2>
+
+        <p>
+          A festék mennyiségét számos tényező befolyásolhatja. Egy régi, porózus
+          vagy javított fal sokkal több anyagot képes felszívni, mint egy sima,
+          előkészített felület.
+        </p>
+
+        <p>
+          A sötét színek világosra történő átfestése gyakran három vagy akár
+          négy réteget is igényelhet. Hasonló a helyzet akkor is, ha új
+          vakolatot szeretnénk festeni.
+        </p>
+
+        <ul>
+          <li>fal állapota</li>
+          <li>festék minősége</li>
+          <li>alapozás megléte</li>
+          <li>felhordás módja</li>
+          <li>színváltás mértéke</li>
+          <li>rétegek száma</li>
+        </ul>
+
+        <h2>Beltéri és kültéri festékek közötti különbség</h2>
+
+        <p>
+          A beltéri és kültéri festékek eltérő tulajdonságokkal rendelkeznek. A
+          kültéri festékeknek ellenállniuk kell az UV-sugárzásnak, a csapadéknak
+          és a hőmérséklet-változásoknak is.
+        </p>
+
+        <p>
+          Kültéri festés esetén gyakran nagyobb anyagfelhasználással kell
+          számolni, különösen érdes vagy strukturált homlokzatoknál.
+        </p>
+
+        <h2>Festés költsége kalkuláció</h2>
+
+        <p>
+          A festés teljes költsége nem csak a festék árától függ. Számolni kell
+          az alapozóval, a hengerekkel, ecsetekkel, maszkolószalaggal, fóliával
+          és egyéb segédanyagokkal is.
+        </p>
+
+        <p>
+          Egy átlagos szoba házilagos kifestése akár 20–50 ezer forintból is
+          megoldható, míg szakemberrel ennek többszörösébe kerülhet.
+        </p>
+
+        <h2>Gyakori hibák festés előtt</h2>
+
+        <ul>
+          <li>Túl kevés festék vásárlása</li>
+          <li>Alapozás kihagyása</li>
+          <li>Nem megfelelő falelőkészítés</li>
+          <li>Olcsó, rossz minőségű festék választása</li>
+          <li>Nem elegendő száradási idő kivárása</li>
+          <li>Eltérő gyártási számú festékek keverése</li>
+        </ul>
+
+        <h2>Milyen festéket válasszunk?</h2>
+
+        <p>
+          A megfelelő festék kiválasztása legalább olyan fontos, mint a
+          szükséges mennyiség kiszámítása. A modern diszperziós festékek könnyen
+          felhordhatók, gyorsan száradnak és jó fedőképességgel rendelkeznek.
+        </p>
+
+        <p>
+          Nedves helyiségekben, például fürdőszobákban és konyhákban érdemes
+          mosható vagy penészálló festéket választani. Gyerekszobák esetében
+          szintén előnyös lehet a könnyen tisztítható felület.
+        </p>
+
+        <h2>Mennyi idő alatt szárad meg a festék?</h2>
+
+        <p>
+          A legtöbb beltéri festék 2–6 óra alatt válik érintésszárazzá, azonban
+          a következő réteg felhordása előtt általában 4–12 órát érdemes várni.
+          A pontos időt mindig a gyártó határozza meg.
+        </p>
+
+        <p>
+          A száradási időt jelentősen befolyásolja a helyiség hőmérséklete,
+          páratartalma és szellőzése.
+        </p>
+
+        <h2>Gyakran ismételt kérdések</h2>
+
+        <h3>Mennyi festék kell egy 25 m²-es szobához?</h3>
+        <p>
+          Általában 8–12 liter festék elegendő lehet két réteg felhordása
+          esetén.
+        </p>
+
+        <h3>Mennyi ideig áll el a maradék festék?</h3>
+        <p>Megfelelően lezárva akár több évig is eltartható.</p>
+
+        <h3>Érdemes tartalék festéket venni?</h3>
+        <p>Igen, a későbbi javítások miatt legalább 5–10% tartalék javasolt.</p>
+
+        <h3>Festés előtt szükséges alapozni?</h3>
+        <p>
+          Új vakolat vagy erősen szívó felület esetén szinte mindig ajánlott.
+        </p>
+
+        <h3>Hány réteg festék az ideális?</h3>
+        <p>
+          A legtöbb esetben két réteg biztosít megfelelő fedést és tartósságot.
+        </p>
+
+        <h3>Festhető-e tapéta?</h3>
+        <p>
+          Bizonyos festhető tapéták igen, de a hagyományos tapéták esetén ez nem
+          minden esetben ajánlott.
+        </p>
+
+        <h3>Hogyan csökkenthető a festékfogyás?</h3>
+        <p>
+          Megfelelő alapozással, jó minőségű festék használatával és egyenletes
+          felhordással jelentősen csökkenthető az anyagfelhasználás.
+        </p>
+      </section>
+    
+    <section class="article priority-seo" data-priority-seo="calculator">
+      <h2>Festésnél nem csak a négyzetméter számít</h2>
+      <p>A festékfogyás függ a fal állapotától, színétől, nedvszívásától és attól is, hány rétegben kell festeni.</p>
+      <p>Erős színváltásnál vagy javított felületnél érdemes alapozóval és plusz réteggel is kalkulálni.</p>
+    </section>
+    <section class="article generated-seo" data-generated-seo="calculator">
+      <h2>Festék kalkulátor használata</h2>
+      <p>
+        A festék kalkulátor gyors segítséget ad, ha pontosabb képet szeretnél kapni egy gyakori
+        építőipari számítás eredményéről. A kalkulátor egyszerűen használható:
+        add meg a szükséges adatokat, az eredmény pedig azonnal megjelenik.
+      </p>
+      <p>
+        Festékmennyiség becslése falakhoz és felületekhez. Az eszköz célja, hogy a számolás ne vegyen el felesleges időt,
+        és mobilon is könnyen ellenőrizhető legyen az eredmény.
+      </p>
+      <p>
+        A kapott értékek tájékoztató jellegűek. Pénzügyi, egészségügyi, építőipari vagy nagyobb értékű
+        döntés előtt érdemes a számítást saját adatokkal többször is ellenőrizni, illetve szükség esetén
+        szakértői tanácsot kérni.
+      </p>
+
+      <h2>Gyakori kérdések</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Mire jó a festék kalkulátor?</summary>
+          <p>Festékmennyiség becslése falakhoz és felületekhez. Akkor hasznos, ha gyors, áttekinthető eredményt szeretnél kapni kézi számolás nélkül.</p>
+        </details>
+        <details>
+          <summary>Ingyenes a kalkulátor használata?</summary>
+          <p>Igen, a Kalkulátor Bázis kalkulátorai ingyenesen használhatók, külön regisztráció nélkül.</p>
+        </details>
+        <details>
+          <summary>Mobilon is működik?</summary>
+          <p>Igen, a kalkulátor mobil-first felülettel készült, ezért telefonon és tableten is kényelmesen használható.</p>
+        </details>
+        <details>
+          <summary>Mennyire pontos az eredmény?</summary>
+          <p>Az eredmény a megadott adatokból számított tájékoztató érték. Ha hivatalos, szerződéses vagy egészségügyi döntéshez használod, ellenőrizd más forrásból is.</p>
+        </details>
+      </div>
+    </section>
+    </main>
+
+    <div id="footer"></div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/epitoipari/festek-kalkulator.js" defer></script>
+  </body>
+</html>

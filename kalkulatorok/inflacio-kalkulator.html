@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Infláció kalkulátor: számold ki pénzed értékének változását az infláció hatására."
+    />
+  <link rel="canonical" href="https://kalkulatorbazis.hu/kalkulatorok/inflacio-kalkulator.html" />
+<title>Infláció kalkulátor</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/pages/inflacio.css" />
+    <script src="../js/global-head.js"></script>
+  </head>
+
+  <body>
+    <div id="header"></div>
+
+    <main class="container page-inflacio">
+      <section class="hero">
+        <h1>Infláció kalkulátor</h1>
+        <p>Nézd meg, mennyit ér a pénzed az idő múlásával.</p>
+      </section>
+
+      <section class="card card-calculator">
+        <div class="calc-grid">
+          <div>
+            <label>Összeg (Ft)</label>
+            <input type="text" id="amount" placeholder="pl. 1 000 000" />
+          </div>
+
+          <div>
+            <label>Infláció (%)</label>
+            <input type="number" id="rate" placeholder="pl. 5" />
+          </div>
+
+          <div>
+            <label>Időtáv (év)</label>
+            <input type="number" id="years" placeholder="pl. 10" />
+          </div>
+        </div>
+
+        <div class="result-box">
+          <p>Érték az idő végén:</p>
+          <p id="result-final">–</p>
+
+          <p id="result-loss"></p>
+        </div>
+      </section>
+
+      <!-- SEO -->
+      <section class="article">
+        <div class="info-box">
+          <strong>Fontos:</strong> Az infláció hosszú távon jelentősen
+          csökkentheti a pénzed vásárlóerejét, ezért érdemes figyelembe venni a
+          megtakarítások és befektetések tervezésekor.
+        </div>
+
+        <h2>Mi az infláció?</h2>
+        <p>
+          Az infláció az árak általános emelkedését jelenti a gazdaságban. Ennek
+          következtében ugyanazért az összegért idővel egyre kevesebb terméket
+          és szolgáltatást tudsz vásárolni.
+        </p>
+
+        <p>
+          Ha az infláció tartósan magas, akkor a készpénzben vagy alacsony
+          kamatozású számlán tartott pénz értéke fokozatosan csökkenhet.
+        </p>
+
+        <h2>Hogyan működik az infláció?</h2>
+
+        <p>
+          Az infláció hatása évről évre halmozódik. Ez azt jelenti, hogy nem
+          egyszerűen összeadódik, hanem minden évben az előző év már csökkent
+          értékére hat.
+        </p>
+
+        <p>
+          Emiatt hosszabb időtávon még viszonylag alacsony infláció mellett is
+          jelentős lehet a pénz értékvesztése.
+        </p>
+
+        <h2>Példa az infláció hatására</h2>
+
+        <p>
+          Tegyük fel, hogy ma rendelkezel 1 000 000 Ft-tal, és az éves infláció
+          5%.
+        </p>
+
+        <p>
+          Ebben az esetben 10 év múlva ugyanaz a pénz lényegesen kevesebb
+          terméket és szolgáltatást tud megvásárolni, mint ma.
+        </p>
+
+        <p>
+          Az infláció kalkulátor segít megbecsülni, hogy adott inflációs
+          környezetben mennyit változhat a pénzed vásárlóereje.
+        </p>
+
+        <h2>Miért fontos figyelni az inflációra?</h2>
+
+        <ul>
+          <li>a megtakarítások reálértéke csökkenhet</li>
+          <li>a fizetések vásárlóereje romolhat</li>
+          <li>a nyugdíjtervezés során kiemelten fontos tényező</li>
+          <li>befolyásolja a hosszú távú pénzügyi célokat</li>
+        </ul>
+
+        <h2>Hogyan védekezhetsz az infláció ellen?</h2>
+
+        <p>
+          Sok megtakarító különböző befektetési formákat választ annak
+          érdekében, hogy pénzének értéke hosszú távon is megmaradjon.
+        </p>
+
+        <p>
+          Ilyenek lehetnek például a részvények, ETF-ek, állampapírok vagy más
+          befektetési eszközök. Fontos azonban tudni, hogy minden befektetés
+          kockázattal jár, és a múltbeli hozamok nem garantálják a jövőbeni
+          eredményeket.
+        </p>
+
+        <h2>Infláció és befektetések</h2>
+
+        <p>
+          Ha egy befektetés hozama alacsonyabb, mint az infláció mértéke, akkor
+          a befektetett pénz reálértéke valójában csökken.
+        </p>
+
+        <p>
+          Ezért érdemes nemcsak a nominális hozamot, hanem az infláció hatását
+          is figyelembe venni a pénzügyi döntések során.
+        </p>
+
+        <h2>Gyakori kérdések az inflációról</h2>
+
+        <h3>Mi számít magas inflációnak?</h3>
+        <p>
+          Erre nincs minden országra és időszakra érvényes válasz, de
+          általánosságban a tartósan több százalékos infláció már érezhető
+          hatással lehet a háztartások pénzügyeire.
+        </p>
+
+        <h3>Elveszítheti az értékét a megtakarításom?</h3>
+        <p>
+          Igen. Ha a megtakarítás hozama nem éri el az infláció mértékét, akkor
+          a pénz vásárlóereje idővel csökkenhet.
+        </p>
+
+        <h3>Miért fontos az infláció a nyugdíjtervezésnél?</h3>
+        <p>
+          Mert egy ma elegendőnek tűnő összeg évtizedek múlva jóval kevesebbet
+          érhet, ezért a hosszú távú pénzügyi tervezés során mindig számolni
+          kell az infláció hatásával.
+        </p>
+
+        <section class="article-recommendation">
+          <h2>Érdekelhet még</h2>
+
+          <p>
+            Az infláció nem minden országban és pénznemben azonos mértékű. Sokan
+            ezért több devizában kezelik megtakarításaikat vagy tartanak
+            külföldi pénznemeket is. Ha érdekelnek a nemzetközi pénzügyek és a
+            devizakezelési lehetőségek, érdemes megismerned a Wise működését.
+          </p>
+
+          <a
+            href="../landing-pages/wise/wise.html"
+            class="wise-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Wise bemutató →
+          </a>
+        </section>
+      </section>
+    
+    <section class="article generated-seo" data-generated-seo="calculator">
+      <h2>Infláció kalkulátor használata</h2>
+      <p>
+        A infláció kalkulátor gyors segítséget ad, ha pontosabb képet szeretnél kapni egy gyakori
+        pénzügyi számítás eredményéről. A kalkulátor egyszerűen használható:
+        add meg a szükséges adatokat, az eredmény pedig azonnal megjelenik.
+      </p>
+      <p>
+        Pénz vásárlóerejének változása infláció mellett. Az eszköz célja, hogy a számolás ne vegyen el felesleges időt,
+        és mobilon is könnyen ellenőrizhető legyen az eredmény.
+      </p>
+      <p>
+        A kapott értékek tájékoztató jellegűek. Pénzügyi, egészségügyi, építőipari vagy nagyobb értékű
+        döntés előtt érdemes a számítást saját adatokkal többször is ellenőrizni, illetve szükség esetén
+        szakértői tanácsot kérni.
+      </p>
+
+      <h2>Gyakori kérdések</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Mire jó a infláció kalkulátor?</summary>
+          <p>Pénz vásárlóerejének változása infláció mellett. Akkor hasznos, ha gyors, áttekinthető eredményt szeretnél kapni kézi számolás nélkül.</p>
+        </details>
+        <details>
+          <summary>Ingyenes a kalkulátor használata?</summary>
+          <p>Igen, a Kalkulátor Bázis kalkulátorai ingyenesen használhatók, külön regisztráció nélkül.</p>
+        </details>
+        <details>
+          <summary>Mobilon is működik?</summary>
+          <p>Igen, a kalkulátor mobil-first felülettel készült, ezért telefonon és tableten is kényelmesen használható.</p>
+        </details>
+        <details>
+          <summary>Mennyire pontos az eredmény?</summary>
+          <p>Az eredmény a megadott adatokból számított tájékoztató érték. Ha hivatalos, szerződéses vagy egészségügyi döntéshez használod, ellenőrizd más forrásból is.</p>
+        </details>
+      </div>
+    </section>
+    </main>
+
+    <div id="footer"></div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/penzugyi/inflacio.js" defer></script>
+  </body>
+</html>
