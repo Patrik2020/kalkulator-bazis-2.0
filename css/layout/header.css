@@ -21,10 +21,26 @@
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--text);
   font-size: 1rem;
   font-weight: 800;
+  line-height: 1;
   text-decoration: none;
+}
+
+.logo-mark {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  background: url("../../favicon/kb-logo-mark.png") center / contain no-repeat;
+  filter: drop-shadow(0 4px 8px rgba(11, 102, 242, 0.12));
+}
+
+.logo-text {
+  white-space: nowrap;
 }
 
 #menu {
@@ -73,6 +89,19 @@
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .logo {
+    gap: 8px;
+    font-size: 0.95rem;
+  }
+
+  .logo-mark {
+    flex-basis: 31px;
+    width: 31px;
+    height: 31px;
+  }
 }
 
 @media (min-width: 860px) {
