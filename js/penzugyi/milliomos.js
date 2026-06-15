@@ -27,6 +27,12 @@ function setGoal(value) {
   calc();
 }
 
+document.querySelectorAll("[data-goal-value]").forEach((button) => {
+  button.addEventListener("click", () => {
+    setGoal(Number(button.dataset.goalValue));
+  });
+});
+
 function calc() {
   const P = parseNumber(initial.value);
   const M = parseNumber(monthly.value);

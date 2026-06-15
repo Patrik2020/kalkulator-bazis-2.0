@@ -128,13 +128,24 @@ function loadComponent(id, path) {
       return res.text();
     })
     .then((data) => {
-      document.getElementById(id).innerHTML = data;
+      const target = document.getElementById(id);
+      target.innerHTML = data;
+      normalizeRootLinks(target, path.includes("../") ? "../" : "./");
 
       if (id === "header") {
         initMobileMenu();
       }
     })
     .catch((err) => console.error(err));
+}
+
+function normalizeRootLinks(container, base) {
+  container.querySelectorAll('a[href^="/"]').forEach((link) => {
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("//")) return;
+
+    link.setAttribute("href", base + href.replace(/^\/+/, ""));
+  });
 }
 
 // =========================

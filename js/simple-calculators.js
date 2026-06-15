@@ -907,6 +907,20 @@ function parseValue(value) {
   return parseFloat(value.toString().replace(/\s/g, "").replace(",", ".")) || 0;
 }
 
+function escapeHtml(value) {
+  return (value ?? "")
+    .toString()
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function escapeAttribute(value) {
+  return escapeHtml(value);
+}
+
 function initSimpleCalculator() {
   const root = document.querySelector("[data-simple-calc]");
   if (!root) return;
@@ -917,13 +931,16 @@ function initSimpleCalculator() {
   if (!calc || !fieldsTarget || !resultsTarget) return;
 
   fieldsTarget.innerHTML = calc.fields.map((field) => {
+    const fieldId = escapeAttribute(field.id);
+    const fieldValue = escapeAttribute(field.value);
+
     if (field.options) {
       return `
         <div>
-          <label for="${field.id}">${field.label}</label>
-          <select id="${field.id}">
+          <label for="${fieldId}">${escapeHtml(field.label)}</label>
+          <select id="${fieldId}">
             ${field.options.map((option) => `
-              <option value="${option.value}" ${Number(option.value) === Number(field.value) ? "selected" : ""}>${option.label}</option>
+              <option value="${escapeAttribute(option.value)}" ${Number(option.value) === Number(field.value) ? "selected" : ""}>${escapeHtml(option.label)}</option>
             `).join("")}
           </select>
         </div>
@@ -932,8 +949,8 @@ function initSimpleCalculator() {
 
     return `
       <div>
-        <label for="${field.id}">${field.label}</label>
-        <input type="text" id="${field.id}" value="${field.value}" />
+        <label for="${fieldId}">${escapeHtml(field.label)}</label>
+        <input type="text" id="${fieldId}" value="${fieldValue}" />
       </div>
     `;
   }).join("");
@@ -950,7 +967,7 @@ function initSimpleCalculator() {
     try {
       const rows = calc.compute(values);
       resultsTarget.innerHTML = rows.map(([label, value]) => `
-        <p><strong>${label}:</strong> ${value}</p>
+        <p><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</p>
       `).join("");
     } catch (error) {
       resultsTarget.textContent = "Adj meg érvényes adatokat a számításhoz.";

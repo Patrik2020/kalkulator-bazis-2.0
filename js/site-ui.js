@@ -11,6 +11,52 @@
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
 
+  const escapeHtml = (value) =>
+    (value ?? "")
+      .toString()
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  const escapeAttribute = escapeHtml;
+
+  const safeClassName = (value) =>
+    (value ?? "")
+      .toString()
+      .split(/\s+/)
+      .filter((token) => /^[a-z0-9_-]+$/i.test(token))
+      .join(" ");
+
+  const safeInternalPath = (value) => {
+    const path = (value ?? "").toString().trim().replace(/^\/+/, "");
+
+    if (
+      !path ||
+      path.includes("..") ||
+      /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(path)
+    ) {
+      return "#";
+    }
+
+    return path;
+  };
+
+  const buildInternalHref = (basePath, value) => {
+    const path = safeInternalPath(value);
+    return path === "#" ? "#" : `${basePath}${path}`;
+  };
+
+  const safeExternalUrl = (value, allowedHosts) => {
+    try {
+      const url = new URL((value ?? "").toString());
+      return allowedHosts.includes(url.hostname) ? url.href : "#";
+    } catch (error) {
+      return "#";
+    }
+  };
+
   const getBasePath = () =>
     window.location.pathname.includes("/kalkulatorok/") ? "../" : "";
 
@@ -41,24 +87,31 @@
 
   const calculatorCard = (calculator, basePath) => {
     const category = getCategory(calculator.category);
+    const cardClass = category ? safeClassName(category.cardClass) : "";
 
     return `
-      <a class="card card-link calculator-card ${category ? category.cardClass : ""}" href="${basePath}${calculator.url}">
-        <h3>${calculator.title}</h3>
-        <p>${calculator.description}</p>
+      <a class="card card-link calculator-card ${cardClass}" href="${escapeAttribute(buildInternalHref(basePath, calculator.url))}">
+        <h3>${escapeHtml(calculator.title)}</h3>
+        <p>${escapeHtml(calculator.description)}</p>
       </a>
     `;
   };
 
   const categoryCard = (category, basePath) => `
-    <a href="${basePath}${category.url}" class="card card-link ${category.cardClass}">
-      <h3>${category.title}</h3>
-      <p>${category.description}</p>
+    <a href="${escapeAttribute(buildInternalHref(basePath, category.url))}" class="card card-link ${safeClassName(category.cardClass)}">
+      <h3>${escapeHtml(category.title)}</h3>
+      <p>${escapeHtml(category.description)}</p>
     </a>
   `;
 
   const renderAdSlot = (target) => {
     if (!target || !data.adsense) return;
+    const adClient = /^ca-pub-\d+$/.test(data.adsense.client || "")
+      ? data.adsense.client
+      : "";
+    const adSlot = /^\d+$/.test(data.adsense.slot || "") ? data.adsense.slot : "";
+
+    if (!adClient || !adSlot) return;
 
     if (localStorage.getItem("cookieConsent") !== "accepted") {
       target.innerHTML = '<div class="ad-placeholder">Reklámhely</div>';
@@ -69,8 +122,8 @@
       <ins
         class="adsbygoogle"
         style="display: block"
-        data-ad-client="${data.adsense.client}"
-        data-ad-slot="${data.adsense.slot}"
+        data-ad-client="${escapeAttribute(adClient)}"
+        data-ad-slot="${escapeAttribute(adSlot)}"
         data-ad-format="auto"
         data-full-width-responsive="true"
       ></ins>
@@ -86,7 +139,12 @@
   };
 
   const loadAdSenseScript = (callback) => {
-    const src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${data.adsense.client}`;
+    const adClient = /^ca-pub-\d+$/.test(data.adsense?.client || "")
+      ? data.adsense.client
+      : "";
+    if (!adClient) return;
+
+    const src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(adClient)}`;
     const existing = document.querySelector(`script[src="${src}"]`);
 
     if (existing) {
@@ -114,15 +172,19 @@
 
   const renderWiseBanner = (target) => {
     if (!target || !data.wise) return;
+    const wiseUrl = safeExternalUrl(data.wise.url, ["wise.prf.hn"]);
+    const wiseImage = safeExternalUrl(data.wise.image, ["wise-creative.prf.hn"]);
+
+    if (wiseUrl === "#" || wiseImage === "#") return;
 
     target.innerHTML = `
-      <a class="wise-banner" href="${data.wise.url}" rel="sponsored noopener" target="_blank">
+      <a class="wise-banner" href="${escapeAttribute(wiseUrl)}" rel="sponsored noopener noreferrer" target="_blank">
         <span>
           <strong>Nemzetközi pénzügyekhez Wise</strong>
           <small>Deviza, utalás és külföldi pénzkezelés egyszerűbben.</small>
         </span>
         <span class="wise-banner-media">
-          <img src="${data.wise.image}" alt="Wise partner ajánlat" loading="lazy" />
+          <img src="${escapeAttribute(wiseImage)}" alt="Wise partner ajánlat" loading="lazy" />
         </span>
       </a>
     `;
@@ -171,12 +233,12 @@
           const category = getCategory(calculator.category);
 
           return `
-            <a class="search-result" href="${basePath}${calculator.url}">
+            <a class="search-result" href="${escapeAttribute(buildInternalHref(basePath, calculator.url))}">
               <span>
-                <strong>${calculator.title}</strong>
-                <small>${calculator.description}</small>
+                <strong>${escapeHtml(calculator.title)}</strong>
+                <small>${escapeHtml(calculator.description)}</small>
               </span>
-              <em>${category ? category.shortTitle : "Kalkulátor"}</em>
+              <em>${escapeHtml(category ? category.shortTitle : "Kalkulátor")}</em>
             </a>
           `;
         })
@@ -238,8 +300,8 @@
 
     if (intro) {
       intro.innerHTML = `
-        <h1>${category.title}</h1>
-        <p>${category.description}</p>
+        <h1>${escapeHtml(category.title)}</h1>
+        <p>${escapeHtml(category.description)}</p>
       `;
     }
 
@@ -252,8 +314,8 @@
 
     if (seo && !seo.querySelector(".faq-list")) {
       seo.innerHTML = `
-        <h2>${category.title} egy helyen</h2>
-        <p>${category.seo}</p>
+        <h2>${escapeHtml(category.title)} egy helyen</h2>
+        <p>${escapeHtml(category.seo)}</p>
         <p>A kalkulátorok mobilon is gyorsan használhatók, a számításokhoz csak a legfontosabb adatokat kell megadnod.</p>
       `;
     }

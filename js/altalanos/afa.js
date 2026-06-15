@@ -19,13 +19,24 @@
     return selected ? selected.value : "netto";
   }
 
-  // =========================
-  // ÁFA GOMBOK (globális kell!)
-  // =========================
-  window.setVAT = function (value) {
-    vatInput.value = value;
-    calculate();
-  };
+  function renderResult(rows) {
+    resultEl.replaceChildren();
+
+    rows.forEach(([label, value], index) => {
+      if (index > 0) {
+        resultEl.appendChild(document.createElement("br"));
+      }
+
+      if (index === rows.length - 1) {
+        const strong = document.createElement("strong");
+        strong.textContent = `${label}: ${value}`;
+        resultEl.appendChild(strong);
+        return;
+      }
+
+      resultEl.append(`${label}: ${value}`);
+    });
+  }
 
   // =========================
   // FŐ SZÁMOLÁS
@@ -37,12 +48,12 @@
 
     // VALIDÁCIÓ
     if (!amount || amount <= 0) {
-      resultEl.innerHTML = "👉 Kérjük, adjon meg egy érvényes összeget.";
+      resultEl.textContent = "Kérjük, adjon meg egy érvényes összeget.";
       return;
     }
 
     if (isNaN(vat) || vat < 0) {
-      resultEl.innerHTML = "👉 Kérjük, adjon meg egy érvényes ÁFA kulcsot.";
+      resultEl.textContent = "Kérjük, adjon meg egy érvényes ÁFA kulcsot.";
       return;
     }
 
@@ -53,21 +64,21 @@
       brutto = netto * (1 + vat / 100);
       vatAmount = brutto - netto;
 
-      resultEl.innerHTML = `
-        Nettó: ${format(netto)} Ft<br>
-        ÁFA (${vat}%): ${format(vatAmount)} Ft<br>
-        <strong>Bruttó: ${format(brutto)} Ft</strong>
-      `;
+      renderResult([
+        ["Nettó", `${format(netto)} Ft`],
+        [`ÁFA (${vat}%)`, `${format(vatAmount)} Ft`],
+        ["Bruttó", `${format(brutto)} Ft`],
+      ]);
     } else {
       brutto = amount;
       netto = brutto / (1 + vat / 100);
       vatAmount = brutto - netto;
 
-      resultEl.innerHTML = `
-        Bruttó: ${format(brutto)} Ft<br>
-        ÁFA (${vat}%): ${format(vatAmount)} Ft<br>
-        <strong>Nettó: ${format(netto)} Ft</strong>
-      `;
+      renderResult([
+        ["Bruttó", `${format(brutto)} Ft`],
+        [`ÁFA (${vat}%)`, `${format(vatAmount)} Ft`],
+        ["Nettó", `${format(netto)} Ft`],
+      ]);
     }
 
     // CTA megjelenítés (ha van)
@@ -81,6 +92,13 @@
   // =========================
   amountInput.addEventListener("input", calculate);
   vatInput.addEventListener("input", calculate);
+
+  document.querySelectorAll("[data-vat-value]").forEach((button) => {
+    button.addEventListener("click", () => {
+      vatInput.value = button.dataset.vatValue;
+      calculate();
+    });
+  });
 
   document
     .querySelectorAll('input[name="mode"]')
