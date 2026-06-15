@@ -12,7 +12,7 @@
   gap: 14px;
 }
 
-.page-hitel input {
+.page-hitel input:not([type="checkbox"]):not([type="radio"]) {
   width: 100%;
   padding: 12px;
   border-radius: 8px;
@@ -45,7 +45,7 @@
   cursor: pointer;
 }
 
-.page-hitel .checkbox-row input {
+.page-hitel .checkbox-row input:not([type="checkbox"]):not([type="radio"]) {
   width: 18px;
   height: 18px;
 }

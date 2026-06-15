@@ -28,7 +28,7 @@
 }
 
 /* ===== INPUT ===== */
-.page-afa input {
+.page-afa input:not([type="checkbox"]):not([type="radio"]) {
   padding: 12px;
   border-radius: 8px;
   background: #f8fafc;
